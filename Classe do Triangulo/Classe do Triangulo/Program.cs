@@ -66,6 +66,16 @@ namespace Classe_do_Triangulo
     {
         static void Main(string[] args)
         {
+            int n = int.Parse(Console.ReadLine());
+            double maiorperimetro = -1;
+            int id, maiorid;
+
+            for (int i = 0; i < n; i++)
+            {
+                int lado1 = int.Parse(Console.ReadLine());
+                int lado2 = int.Parse(Console.ReadLine());
+                int lado3 = int.Parse(Console.ReadLine());
+            }
         }
     }
 }
