@@ -30,8 +30,8 @@ namespace ExLP4
         {
             MySqlCommand cmd = new MySqlCommand()
             {
-                Connection = new MySqlConnection("Server=localhost;Database=test;Uid=root;Pwd="),
-                CommandText = "INSERT INTO Alunos(nome, idade, turma) VALUES (@nome, @idade, @turma);"
+                Connection = new MySqlConnection("Server=localhost;Database=lp4;Uid=root;Pwd=root"),
+                CommandText = "INSERT INTO Aluno(nome, idade, turma) VALUES (@nome, @idade, @turma);"
             };
 
             cmd.Parameters.AddWithValue("@nome", txtnome.Text);
@@ -57,17 +57,17 @@ namespace ExLP4
 
             MySqlCommand cmd = new MySqlCommand()
             {
-                Connection = new MySqlConnection("Server=localhost;Database=test;Uid=root;Pwd="),
-                CommandText = "SELECT * FROM Alunos WHERE Nome = @nome;"
+                Connection = new MySqlConnection("Server=localhost;Database=lp4;Uid=root;Pwd=root"),
+                CommandText = "SELECT * FROM Aluno WHERE Nome = @nome;"
             };
-
+            cmd.Connection.Open();
             cmd.Parameters.AddWithValue("@nome", txtnome.Text);
 
             MySqlDataReader r = cmd.ExecuteReader();
 
-            if(r.HasRows)
+            if (r.HasRows)
             {
-                while(r.Read())
+                while (r.Read())
                 {
                     Aluno aluno = new Aluno();
                     aluno.Id = r.GetInt32(0);
@@ -76,8 +76,24 @@ namespace ExLP4
                     aluno.Turma = r.GetString(3);
                     a.Add(aluno);
                 }
+                dtg.ItemsSource = a;
+                dtg.CanUserAddRows = false;
+                Limpar();
             }
-            
+            else MessageBox.Show("Nenhum Registro Encontrado");
+            cmd.Connection.Close();
+        }
+        public void Deletar()
+        {
+            MySqlCommand cmd = new MySqlCommand()
+            {
+                Connection = new MySqlConnection("Server=localhost;Database=lp4;Uid=root;Pwd=root"),
+                CommandText = ("DELETE FROM Aluno WHERE Nome = @nome;")
+            };
+            cmd.Parameters.AddWithValue("@nome", txtnome.Text);
+            cmd.Connection.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
         }
 
         private void btncadastro_Click(object sender, RoutedEventArgs e)
@@ -88,12 +104,13 @@ namespace ExLP4
 
         private void btnConsultar_Click(object sender, RoutedEventArgs e)
         {
-
+            Consulta();
         }
 
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void btndelete_Click(object sender, RoutedEventArgs e)
         {
-
+            Deletar();
+            Limpar();
         }
     }
 }

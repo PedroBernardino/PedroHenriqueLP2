@@ -13,15 +13,11 @@
         <TextBox x:Name="txtnome" HorizontalAlignment="Left" Height="23" Margin="135,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="White"/>
         <TextBox x:Name="txtidade" HorizontalAlignment="Left" Height="23" Margin="135,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtturma" HorizontalAlignment="Left" Height="23" Margin="135,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btncadastro" Content="Cadastrar" HorizontalAlignment="Left" Margin="57,269,0,0" VerticalAlignment="Top" Width="75" Click="btncadastro_Click"/>
-        <Button x:Name="btnConsultar" Content="Consulta" HorizontalAlignment="Left" Margin="180,269,0,0" VerticalAlignment="Top" Width="75" Click="btnConsultar_Click"/>
-        <ListView HorizontalAlignment="Left" Height="100" Margin="352,103,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="ListView_SelectionChanged">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <Button x:Name="btncadastro" Content="Cadastrar" HorizontalAlignment="Left" Margin="35,269,0,0" VerticalAlignment="Top" Width="75" Click="btncadastro_Click"/>
+        <Button x:Name="btnConsultar" Content="Consulta" HorizontalAlignment="Left" Margin="135,269,0,0" VerticalAlignment="Top" Width="75" Click="btnConsultar_Click" RenderTransformOrigin="0.027,0.6"/>
+        <DataGrid x:Name="dtg" HorizontalAlignment="Left" Height="149" Margin="295,105,0,0" VerticalAlignment="Top" Width="179"/>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btndelete" Content="Deletar" HorizontalAlignment="Left" Margin="239,269,0,0" VerticalAlignment="Top" Width="75" Click="btndelete_Click"/>
 
     </Grid>
 </Window>
